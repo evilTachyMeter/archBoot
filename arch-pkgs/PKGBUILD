@@ -1,0 +1,38 @@
+# Maintainer: Michael Daffin <michael@daffin.io>
+pkgbase=evilTachyMeter
+pkgname=(evilTachyMeter-base)
+pkgver=50
+pkgrel=1
+pkgdesc="System config for evilTachyMeter systems"
+arch=(any)
+url="https://github.com/evilTachyMeter/archBoot/my-metapackages"
+license=(MIT)
+groups=(evilTachyMeter)
+
+rootdir=$PWD
+
+package_evilTachyMeter-base() {
+    provides=(evilTachyMeter-devel)
+    conflicts=(evilTachyMeter-devel)
+    replaces=(evilTachyMeter-devel)
+    install=evilTachyMeter-base.install
+
+    #base/base-devel
+    depends=(archlinux-keyring autoconf automake bash binutils bison bzip2 coreutils debugedit fakeroot file filesystem findutils
+        flex gawk gcc gcc-libs gettext glibc grep groff gzip iproute2 iputils libtool licenses m4 make pacman patch pciutils
+        pkgconf procps-ng psmisc sed shadow sudo systemd systemd-sysvcompat tar texinfo util-linux which xz
+    )
+    #base-other
+    depends+=(
+        base linux linux-zen linux-firmware intel-ucode amd-ucode
+    )
+    #rice
+    depends+=(
+        hyprland kitty dolphin spotify grimblast swappy firefox swww swaylock ags zsh neovim neofetch cava brightnessctl gvfs
+        pipewire-pulse NetworkManager sddm
+    )
+    #other
+    depends+=(
+        htop git devtools
+    )
+}
