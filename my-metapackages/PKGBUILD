@@ -1,6 +1,6 @@
 # Maintainer: Michael Daffin <michael@daffin.io>
 pkgbase=evilTachyMeter
-pkgname=(evilTachyMeter-base evilTachyMeter-desktop evilTachyMeter-neovim evilTachyMeter-laptop)
+pkgname=(evilTachyMeter-base)
 pkgver=50
 pkgrel=1
 pkgdesc="System config for evilTachyMeter systems"
