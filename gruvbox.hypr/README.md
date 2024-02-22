@@ -1,4 +1,4 @@
-<div align = center><img src="https://raw.githubusercontent.com/evilTachyMeter/archBoot/gruvbox.hypr/repo/logo.png"><br><br>
+<div align = center><img src="repo/logo.png"><br><br>
 
 &ensp;[<kbd> <br> Screenshots <br> </kbd>](#Screenshots)&ensp;
 &ensp;[<kbd> <br> Installation <br> </kbd>](#Installation)&ensp;
@@ -11,11 +11,11 @@
 ## Screenshots
 
 <p align="center">
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/1.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/2.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/3.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/4.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/5.png" />
+  <img align="center" width="49%" src="repo/1.png" />
+  <img align="center" width="49%" src="repo/2.png" />
+  <img align="center" width="49%" src="repo/3.png" />
+  <img align="center" width="49%" src="repo/4.png" />
+  <img align="center" width="49%" src="repo/5.png" />
 </p>
 
 <br>
