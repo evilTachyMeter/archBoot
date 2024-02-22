@@ -1,6 +1,6 @@
 # Maintainer: Michael Daffin <michael@daffin.io>
 pkgbase=evilTachyMeter
-pkgname=(evilTachyMeter-base)
+pkgname=(tachymeter-base)
 pkgver=50
 pkgrel=1
 pkgdesc="System config for evilTachyMeter systems"
@@ -11,10 +11,7 @@ groups=(evilTachyMeter)
 
 rootdir=$PWD
 
-package_evilTachyMeter-base() {
-    provides=(evilTachyMeter-devel)
-    conflicts=(evilTachyMeter-devel)
-    replaces=(evilTachyMeter-devel)
+package_tachymeter-base() {
     install=evilTachyMeter-base.install
 
     #base/base-devel
