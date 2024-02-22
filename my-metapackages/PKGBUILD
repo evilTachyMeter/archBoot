@@ -35,6 +35,4 @@ package_evilTachyMeter-base() {
     depends+=(
         htop git devtools
     )
-
-    cp -a "$rootdir/../gruvbox.hypr/"* "$pkgdir"
 }
