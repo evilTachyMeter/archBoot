@@ -18,7 +18,7 @@ package_evilTachyMeter-base() {
     install=evilTachyMeter-base.install
 
     #base/base-devel
-    depends==(archlinux-keyring autoconf automake bash binutils bison bzip2 coreutils debugedit fakeroot file filesystem findutils
+    depends=(archlinux-keyring autoconf automake bash binutils bison bzip2 coreutils debugedit fakeroot file filesystem findutils
         flex gawk gcc gcc-libs gettext glibc grep groff gzip iproute2 iputils libtool licenses m4 make pacman patch pciutils
         pkgconf procps-ng psmisc sed shadow sudo systemd systemd-sysvcompat tar texinfo util-linux which xz
     )
