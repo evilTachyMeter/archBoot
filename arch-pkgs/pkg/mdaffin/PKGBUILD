@@ -1,0 +1,178 @@
+# Maintainer: Michael Daffin <michael@daffin.io>
+pkgbase=mdaffin
+pkgname=(mdaffin-base mdaffin-desktop mdaffin-neovim mdaffin-laptop mdaffin-dell-xps-13)
+pkgver=50
+pkgrel=1
+pkgdesc="System config for mdaffin systems"
+arch=(any)
+url="https://github.com/mdaffin/arch-repo"
+license=(MIT)
+groups=(mdaffin)
+
+rootdir=$PWD
+
+package_mdaffin-base() {
+    provides=(mdaffin-devel)
+    conflicts=(mdaffin-devel)
+    replaces=(mdaffin-devel)
+    install=mdaffin-base.install
+
+    # Base packages
+    depends=(base linux linux-firmware man-db man-pages texinfo intel-ucode)
+
+    # Base Devel
+    depends+=(
+        autoconf automake binutils bison fakeroot file findutils flex gawk gcc
+        gettext grep groff gzip libtool m4 make pacman patch pkgconf sed sudo
+        texinfo which
+    )
+
+    # Extra general packages
+    depends+=(
+        ripgrep exa fd wget fzf unzip zip dialog pacman-contrib bat ncdu
+        keybase efibootmgr pv zsh grml-zsh-config zsh-completions watchexec
+    )
+
+    # Debugging tools
+    depends+=(
+        lsof bind-tools mtr socat htop iotop openbsd-netcat strace tcpdump whois
+        iftop dstat
+    )
+
+    # Filesystems
+    depends+=(e2fsprogs exfat-utils dosfstools f2fs-tools)
+
+    # Networking
+    depends+=(nftables iw iwd avahi nss-mdns openssh)
+
+    # General tools
+    depends+=(git cmake jq musl ddrescue)
+
+    # Arch Packaging
+    depends+=(devtools aurutils aws-cli-v2-bin)
+
+    # Docker
+    depends+=(docker docker-compose dnsmasq rancher-k3d-bin kubectl k9s kind)
+
+    # Automation tools
+    depends+=(terraform)
+
+    # Languages
+    depends+=(rustup clang go)
+
+    # Python tools
+    depends+=(python-black python-pycodestyle python-pylint flake8)
+
+    # Node tools
+    depends+=(yarn npm nodejs prettier)
+
+    # Text
+    depends+=(vale)
+
+    cp -a "$rootdir/files-base/"* "$pkgdir"
+    chmod -R 0750 "$pkgdir/etc/sudoers.d"
+}
+
+package_mdaffin-neovim() {
+    provides=(vim vi)
+    conflicts=(vim vi)
+    replaces=(vim vi)
+
+    depends=(mdaffin-base neovim python-msgpack python-pynvim)
+    depends+=(
+        bash-language-server
+        dockerfile-language-server-bin
+        gopls
+        nodejs-svelte-language-server
+        python-language-server
+        rust-analyzer
+        terraform-ls
+        typescript-language-server-bin
+        vim-language-server
+        vscode-css-languageserver-bin
+        vscode-html-languageserver-bin
+        vscode-json-languageserver-bin
+        yaml-language-server
+    )
+
+    export DESTDIR=$pkgdir
+    "$rootdir/add-nvim-plugin" opt neovim/nvim-lspconfig
+    "$rootdir/add-nvim-plugin" start liuchengxu/vim-which-key
+    "$rootdir/add-nvim-plugin" start ap/vim-buftabline
+    "$rootdir/add-nvim-plugin" start ekalinin/Dockerfile.vim
+    "$rootdir/add-nvim-plugin" start sheerun/vim-polyglot
+    "$rootdir/add-nvim-plugin" opt dracula/vim dracula
+    "$rootdir/add-nvim-plugin" opt nvim-lua/lsp_extensions.nvim
+    "$rootdir/add-nvim-plugin" opt nvim-lua/completion-nvim
+    "$rootdir/add-nvim-plugin" opt nvim-lua/lsp-status.nvim
+    "$rootdir/add-nvim-plugin" opt junegunn/fzf.vim
+    "$rootdir/add-nvim-plugin" start udalov/kotlin-vim
+
+    cp -a "$rootdir/files-neovim/"* "$pkgdir"
+}
+
+package_mdaffin-desktop() {
+    install=mdaffin-desktop.install
+
+    depends=(mdaffin-base)
+
+    # I3 Desktop
+    depends+=(i3-wm i3status i3blocks i3lock rofi brightnessctl)
+
+    # Sway
+    depends+=(
+        sway swaylock swayidle xorg-server-xwayland wl-clipboard
+        playerctl swayshot udiskie j4-dmenu-desktop bemenu mako qt5-wayland
+    )
+
+    # Login manager
+    depends+=(sddm rng-tools archlinux-themes-sddm)
+
+    # Applications
+    depends+=(
+        alacritty firefox gopass discord slack-desktop signal-desktop nemo
+        nemo-fileroller nemo-preview
+    )
+
+    # Utility
+    depends+=(
+        redshift python-gobject bluez bluez-utils blueberry pipewire
+        pipewire-alsa pipewire-pulse wireplumber helvum pavucontrol paprefs
+        scrot arandr
+    )
+
+    # Drivers and utilities
+    depends+=(
+        libinput-gestures xf86-input-libinput xf86-video-vesa vulkan-intel
+        nvidia nvidia-utils
+    )
+
+    # Xorg packages and utilities
+    depends+=(xorg-xkill xorg-xev xorg-xhost xorg-xrandr xsel)
+
+    # Fonts
+    depends+=(
+        noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-monofur
+        ttf-dejavu xorg-fonts-misc ttf-font-awesome
+    )
+
+    optdepends=(krita okular chromium netdata mupdf-gl)
+
+    cp -a "$rootdir/files-desktop/"* "$pkgdir"
+}
+
+package_mdaffin-gaming() {
+    depends=(
+        mdaffin-desktop steam nvidia nvidia-utils lib32-nvidia-utils lib32-libpulse
+        ttf-liberation wqy-zenhei
+    )
+}
+
+package_mdaffin-laptop() {
+    depends=('mdaffin-desktop' 'powertop')
+}
+
+package_mdaffin-dell-xps-13() {
+    depends=('mdaffin-laptop')
+    cp -a "$rootdir/files-dell-xps-13/"* "$pkgdir"
+}

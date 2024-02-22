@@ -1,0 +1,15 @@
+scrolling:
+  history: 100000
+
+font:
+  size: 9.0
+
+mouse:
+  hide_when_typing: true
+
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>='
+  save_to_clipboard: false
+
+key_bindings:
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }

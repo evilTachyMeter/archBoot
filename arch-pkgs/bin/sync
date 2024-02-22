@@ -1,0 +1,28 @@
+#!/bin/bash
+# Wraps aursync command to mount an amazon s3 bucket which contains a repository
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+REMOTE_PATH=s3://mdaffin-arch/repo/x86_64
+LOCAL_PATH=$HOME/.local/share/arch-repo
+REPO_NAME=mdaffin
+CHROOT="$HOME/.local/share/arch-root"
+
+mkdir -p "$LOCAL_PATH"
+
+## Sync remote DB to local ##
+aws s3 cp "$REMOTE_PATH/$REPO_NAME".db.tar.xz "$LOCAL_PATH/"
+aws s3 cp "$REMOTE_PATH/$REPO_NAME".files.tar.xz "$LOCAL_PATH/"
+ln -sf "$REPO_NAME.db.tar.xz" "$LOCAL_PATH/$REPO_NAME.db"
+ln -sf "$REPO_NAME.files.tar.xz" "$LOCAL_PATH/$REPO_NAME.files"
+
+## Clean up older packages that may or may not have been deleted from the
+## remote so that we do not reupload them
+rm -f "$LOCAL_PATH/"*.pkg.tar.zst
+
+aur sync --database "$REPO_NAME" --root "$LOCAL_PATH" --chroot --directory "$CHROOT" "$@" || true
+
+## Sync local DB to remote ##
+aws s3 sync --follow-symlinks --acl=public-read \
+    "$LOCAL_PATH/" \
+    "$REMOTE_PATH/"
