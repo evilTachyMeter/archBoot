@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=MDaffin Sway
-Comment=An i3-compatible Wayland compositor
-Exec=env QT_QPA_PLATFORM=wayland-egl CLUTTER_BACKEND=wayland MOZ_ENABLE_WAYLAND=1 MOZ_USE_XINPUT2=1 sway
-Type=Application
