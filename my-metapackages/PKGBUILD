@@ -30,10 +30,12 @@ package_evilTachyMeter-base() {
     #rice
     depends+=(
         hyprland kitty dolphin spotify grimblast swappy firefox swww swaylock ags zsh neovim neofetch cava brightnessctl gvfs
-        pipewire-pulse NetworkManager
+        pipewire-pulse NetworkManager sddm
     )
     #other
     depends+=(
         htop git 
     )
+
+    cp -a "$rootdir/../gruvbox.hypr/"* "$pkgdir"
 }
