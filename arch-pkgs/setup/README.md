@@ -1,4 +1,4 @@
-<div align = center><img src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/logo.png"><br><br>
+<div align = center><img src="https://raw.githubusercontent.com/qxb3/gruvbox.hypr/vim_styled/repo/logo.png"><br><br>
 
 &ensp;[<kbd> <br> Screenshots <br> </kbd>](#Screenshots)&ensp;
 &ensp;[<kbd> <br> Installation <br> </kbd>](#Installation)&ensp;
@@ -11,11 +11,11 @@
 ## Screenshots
 
 <p align="center">
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/1.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/2.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/3.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/4.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/evilTachyMeter/gruvbox.hypr/vim_styled/repo/5.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/qxb3/gruvbox.hypr/vim_styled/repo/1.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/qxb3/gruvbox.hypr/vim_styled/repo/2.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/qxb3/gruvbox.hypr/vim_styled/repo/3.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/qxb3/gruvbox.hypr/vim_styled/repo/4.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/qxb3/gruvbox.hypr/vim_styled/repo/5.png" />
 </p>
 
 <br>
@@ -29,7 +29,7 @@
 > Please see [Dependecies](#Dependecies)
 
 ```bash
-git clone --depth=1 --single-branch --branch vim_styled https://github.com/evilTachyMeter/gruvbox.hypr
+git clone --depth=1 --single-branch --branch vim_styled https://github.com/qxb3/gruvbox.hypr
 cd gruvbox.hypr
 cp -r font/* ~/.local/share/fonts
 cp -r .config/* ~/.config
